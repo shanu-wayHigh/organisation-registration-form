@@ -6,8 +6,8 @@ import './styles.scss'
 
 function CompanyDetails() {
   const [formData, setFormData] = React.useState({} as any)
-  const [error, setError] = React.useState({} as any)
-  const { setActiveIndex } = React.useContext(AppContext)
+  const [error] = React.useState({} as any)
+  const { setActiveIndex, setCompletedIndex } = React.useContext(AppContext)
 
   const handleChange = (event: any) => {
     const { value, name, type, checked = false } = event.target
@@ -31,6 +31,8 @@ function CompanyDetails() {
     const otp = generateOTP()
     localStorage.setItem('otp', otp)
     setActiveIndex(2)
+
+    setCompletedIndex(1)
   }
 
   return (
@@ -102,6 +104,7 @@ function CompanyDetails() {
             className="back-button"
             onClick={() => {
               setActiveIndex(0)
+              setCompletedIndex('')
             }}
           >
             Back

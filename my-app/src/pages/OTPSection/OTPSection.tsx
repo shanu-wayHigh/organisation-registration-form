@@ -5,7 +5,7 @@ import './styles.scss'
 function OTPSection() {
   const [otp, setOtp] = React.useState([] as any)
   const [error, setError] = React.useState('')
-  const { setActiveIndex } = React.useContext(AppContext)
+  const { setActiveIndex, setCompletedIndex } = React.useContext(AppContext)
 
   const handleChange = (event: any) => {
     setOtp([...otp, event.target.value])
@@ -44,6 +44,7 @@ function OTPSection() {
             className="back-button"
             onClick={() => {
               setActiveIndex(0)
+              setCompletedIndex('')
             }}
           >
             Back

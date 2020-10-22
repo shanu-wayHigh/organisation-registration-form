@@ -8,7 +8,7 @@ import './styles.scss'
 function PersonalDetails() {
   const [formData, setFormData] = React.useState({ gender: 'male' } as any)
   const [error, setError] = React.useState({} as any)
-  const { setActiveIndex } = React.useContext(AppContext)
+  const { setActiveIndex, setCompletedIndex } = React.useContext(AppContext)
 
   const handleChange = (event: any) => {
     const { value, name } = event.target
@@ -40,6 +40,7 @@ function PersonalDetails() {
     validateForm(formData)
     localStorage.setItem('personalDetails', JSON.stringify(formData))
     setActiveIndex(1)
+    setCompletedIndex(0)
   }
 
   return (

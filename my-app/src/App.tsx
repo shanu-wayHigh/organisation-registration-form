@@ -8,7 +8,7 @@ const AppContext = React.createContext({} as any)
 
 function TabPanel(props: any) {
   const { list = [] } = props
-  const { activeIndex } = React.useContext(AppContext)
+  const { activeIndex, completedIndex } = React.useContext(AppContext)
 
   return (
     list.length > 0 &&
@@ -17,7 +17,22 @@ function TabPanel(props: any) {
         key={index}
         className={`tab ${activeIndex === index ? 'active-tab' : ''}`}
       >
-        <span className="rounded-number">{index + 1}</span>
+        <span className="rounded-number">
+          {completedIndex === index ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24"
+              viewBox="0 0 24 24"
+              width="24"
+              fill="#ffffff"
+            >
+              <path d="M0 0h24v24H0z" fill="none" />
+              <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+            </svg>
+          ) : (
+            index + 1
+          )}
+        </span>
         <span>{label}</span>
       </div>
     ))
@@ -26,9 +41,12 @@ function TabPanel(props: any) {
 
 function App() {
   const [activeIndex, setActiveIndex] = React.useState(0)
+  const [completedIndex, setCompletedIndex] = React.useState('')
 
   return (
-    <AppContext.Provider value={{ activeIndex, setActiveIndex }}>
+    <AppContext.Provider
+      value={{ activeIndex, setActiveIndex, setCompletedIndex, completedIndex }}
+    >
       <div className="App">
         <header className="header-panel">
           <TabPanel
