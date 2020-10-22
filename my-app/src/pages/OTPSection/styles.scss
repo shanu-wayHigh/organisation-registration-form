@@ -1,0 +1,28 @@
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .input-otp {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    text-align: center;
+  }
+}
+.separator {
+  width: 100%;
+  border: 1px solid #847d7d;
+  margin: 1rem 0;
+}
+.just-text {
+  text-align: center;
+  color: #847d7d;
+  font-size: 10px;
+}
+.error {
+  font-size: 10px;
+  color: red;
+  margin: 0.5rem 0;
+}

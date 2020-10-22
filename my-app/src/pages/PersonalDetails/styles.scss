@@ -1,0 +1,31 @@
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+.label-heading {
+  color: #847d7d;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.input-box {
+  height: 1.5rem;
+  &::focus {
+    outline: #ed5902;
+  }
+}
+.radio-box,
+.select-box {
+  height: 30px;
+}
+.submit-button {
+  height: 2rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background-color: #ed5902;
+  color: #ffffff;
+}

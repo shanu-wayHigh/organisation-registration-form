@@ -1,0 +1,56 @@
+#root {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: #f7f5f5;
+}
+.section-wrapper {
+  text-align: center;
+}
+.wrapper {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+.personal-details-section {
+  padding: 1.5rem;
+}
+.header-panel {
+  background-color: #2f4b64;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  justify-content: space-around;
+  // position: fixed;
+  // top: 0;
+
+  .rounded-number {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #29435a;
+    margin-right: 1rem;
+  }
+
+  .tab {
+    color: #c1c9d1;
+    display: flex;
+    align-items: center;
+    &.active-tab {
+      color: #ffffff;
+      .rounded-number {
+        background-color: #ed5902;
+      }
+    }
+  }
+}

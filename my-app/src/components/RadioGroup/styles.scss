@@ -1,0 +1,20 @@
+.gender-label {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  color: black;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  width: 100px;
+  text-transform: capitalize;
+
+  &.active-radio {
+    background-color: #fdeee6;
+    color: #ef6c24;
+  }
+  input {
+    display: none;
+  }
+}
