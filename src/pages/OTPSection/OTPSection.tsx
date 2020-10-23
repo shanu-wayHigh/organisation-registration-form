@@ -5,7 +5,11 @@ import './styles.scss'
 function OTPSection() {
   const [otp, setOtp] = React.useState([] as any)
   const [error, setError] = React.useState('')
-  const { setActiveIndex, setCompletedIndex } = React.useContext(AppContext)
+  const {
+    setActiveIndex,
+    setCompletedIndex,
+    completedIndex,
+  } = React.useContext(AppContext)
   const elementsRef: any = useRef([])
 
   const handleChange = (event: any, index: number) => {
@@ -19,8 +23,8 @@ function OTPSection() {
     const localStorageOtp = localStorage.getItem('otp')
     if (joinedOtp === localStorageOtp) {
       setActiveIndex(3)
-      setCompletedIndex(0)
-      setCompletedIndex(1)
+      setCompletedIndex([...completedIndex, 0])
+      setCompletedIndex([...completedIndex, 1])
       localStorage.clear()
     } else {
       setError('OTP you entered is wrong')
@@ -60,7 +64,7 @@ function OTPSection() {
             className="back-button"
             onClick={() => {
               setActiveIndex(1)
-              setCompletedIndex('')
+              setCompletedIndex([...completedIndex, 0])
             }}
           >
             Back

@@ -9,6 +9,7 @@ const AppContext = React.createContext({} as any)
 function TabPanel(props: any) {
   const { list = [] } = props
   const { activeIndex, completedIndex } = React.useContext(AppContext)
+  console.log({ completedIndex })
 
   return (
     list.length > 0 &&
@@ -18,7 +19,7 @@ function TabPanel(props: any) {
         className={`tab ${activeIndex === index ? 'active-tab' : ''}`}
       >
         <span className="rounded-number">
-          {completedIndex === index ? (
+          {completedIndex[index] === index ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="24"
@@ -40,8 +41,8 @@ function TabPanel(props: any) {
 }
 
 function App() {
-  const [activeIndex, setActiveIndex] = React.useState(2)
-  const [completedIndex, setCompletedIndex] = React.useState('')
+  const [activeIndex, setActiveIndex] = React.useState(0)
+  const [completedIndex, setCompletedIndex] = React.useState([])
 
   return (
     <AppContext.Provider

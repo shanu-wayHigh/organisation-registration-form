@@ -28,7 +28,11 @@ function PersonalDetails() {
     state: 'TamilNadu',
   } as any)
   const [error, setError] = React.useState({} as any)
-  const { setActiveIndex, setCompletedIndex } = React.useContext(AppContext)
+  const {
+    setActiveIndex,
+    setCompletedIndex,
+    completedIndex,
+  } = React.useContext(AppContext)
 
   const handleChange = (event: any) => {
     const { value, name } = event.target
@@ -49,7 +53,7 @@ function PersonalDetails() {
     validateForm(formData)
     localStorage.setItem('personalDetails', JSON.stringify(formData))
     setActiveIndex(1)
-    setCompletedIndex(0)
+    setCompletedIndex([...completedIndex, 0])
   }
 
   return (

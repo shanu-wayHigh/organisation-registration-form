@@ -10,7 +10,11 @@ emailjs.init('user_zjkxUiBwWLTcgOOXPaXu0')
 function CompanyDetails() {
   const [formData, setFormData] = React.useState({} as any)
   const [error] = React.useState({} as any)
-  const { setActiveIndex, setCompletedIndex } = React.useContext(AppContext)
+  const {
+    setActiveIndex,
+    setCompletedIndex,
+    completedIndex,
+  } = React.useContext(AppContext)
 
   const handleChange = (event: any) => {
     const { value, name, type, checked = false } = event.target
@@ -46,8 +50,8 @@ function CompanyDetails() {
       }
     )
     setActiveIndex(2)
-    setCompletedIndex(0)
-    setCompletedIndex(1)
+    setCompletedIndex([...completedIndex, 0])
+    setCompletedIndex([...completedIndex, 1])
   }
 
   return (
@@ -119,7 +123,7 @@ function CompanyDetails() {
             className="back-button"
             onClick={() => {
               setActiveIndex(0)
-              setCompletedIndex('')
+              setCompletedIndex([])
             }}
           >
             Back
