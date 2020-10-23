@@ -12,6 +12,13 @@
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+.flag-style {
+  margin-right: 0.5rem;
+}
+.align-phone-number {
+  display: flex;
+  align-items: center;
+}
 .input-box {
   height: 1.5rem;
   &::focus {

@@ -43,6 +43,28 @@ function Select(props: any) {
           })}
         </select>
       </div>
+      <div className="flex-column">
+        <label className="label-heading">Phone Number</label>
+        <div className="align-phone-number">
+          <button className="" disabled={true}>
+            <span className="flag-style">{selectedVal.flag}</span>
+            <span>{selectedVal.code}</span>
+          </button>
+          <input
+            className="input-box"
+            name="phoneNumber"
+            type="number"
+            onChange={handleChange}
+            required
+            style={{
+              flex: 1,
+              borderLeft: '0',
+              border: '1px solid #ccc',
+              borderRadius: '0.25rem',
+            }}
+          ></input>
+        </div>
+      </div>
     </>
   )
 }

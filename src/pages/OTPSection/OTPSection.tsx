@@ -6,9 +6,10 @@ function OTPSection() {
   const [otp, setOtp] = React.useState([] as any)
   const [error, setError] = React.useState('')
   const { setActiveIndex, setCompletedIndex } = React.useContext(AppContext)
+  const elementsRef: any = useRef([])
 
-  const handleChange = (event: any) => {
-    setOtp([...otp, event.target.value])
+  const handleChange = (event: any, index: number) => {
+    setOtp([...otp, event?.target.value])
   }
 
   const handleSubmit = (e: any) => {
@@ -18,14 +19,14 @@ function OTPSection() {
     const localStorageOtp = localStorage.getItem('otp')
     if (joinedOtp === localStorageOtp) {
       setActiveIndex(3)
+      setCompletedIndex(0)
+      setCompletedIndex(1)
       localStorage.clear()
     } else {
       setError('OTP you entered is wrong')
       setOtp([])
     }
   }
-  const inputData = new Array(5)
-  const elementsRef: any = useRef(inputData.map(() => createRef()))
 
   const renderInput = () => {
     let items = []
@@ -36,8 +37,9 @@ function OTPSection() {
           className="input-otp"
           maxLength={1}
           type="text"
-          onChange={handleChange}
-          ref={elementsRef[i] as any}
+          onChange={event => handleChange(event, i)}
+          ref={ref => (elementsRef.current[i] = ref)}
+          tabIndex={i}
         />
       )
     }
