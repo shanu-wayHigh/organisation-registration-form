@@ -6,26 +6,9 @@ import { PersonDetailsContext } from '../PersonalDetails/context'
 import { AppContext } from '../../App'
 import './styles.scss'
 
-const options: any = [
-  {
-    field: 'India',
-    flag: emojiFlags.countryCode('IN').emoji,
-    subField: ['TamilNadu', 'Karnataka', 'Kerala'],
-    code: '+91',
-  },
-  {
-    field: 'United States',
-    flag: emojiFlags.countryCode('US').emoji,
-    subField: ['America', 'England', 'New York'],
-    code: '+1',
-  },
-]
-
 function PersonalDetails() {
   const [formData, setFormData] = React.useState({
     gender: 'male',
-    country: options[0].field as any,
-    state: 'TamilNadu',
   } as any)
   const [error, setError] = React.useState({} as any)
   const {
@@ -80,7 +63,6 @@ function PersonalDetails() {
         <div>
           <Select
             className="select-box"
-            options={options}
             fields={['Country', 'State']}
             onChange={handleChange}
           />

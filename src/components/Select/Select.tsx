@@ -1,68 +1,62 @@
 import React, { useContext, useState } from 'react'
+import { CountryDropdown, RegionDropdown } from 'react-country-region-selector'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 import { PersonDetailsContext } from '../../pages/PersonalDetails/context'
 
 function Select(props: any) {
-  const { options, onChange = () => {}, fields = [], className = '' } = props
+  const { fields = [], className = '' } = props
   const { formData, setFormData } = useContext(PersonDetailsContext as any)
-  const [selectedValue, setSelectedValue] = useState(options[0])
+  const [country, setCountry] = React.useState('')
+  const [shortCountry, setShortCountry] = React.useState('')
+  const [region, setRegion] = React.useState('')
+  const [phone, setPhone] = React.useState('')
 
-  const handleChange = (event: any) => {
-    const { name, value } = event.target
-    setSelectedValue(value)
-    setFormData({ ...formData, [name]: value })
+  const selectCountry = (val: any) => {
+    setCountry(val)
+    setFormData({ ...formData, country: val })
   }
 
-  const selectedVal =
-    options.find((item: any) => item.field === selectedValue) || options[0]
+  const selectRegion = (val: any) => {
+    setRegion(val)
+    setFormData({ ...formData, region: val })
+  }
 
+  const selectPhone = (val: any) => {
+    setPhone(val)
+    setFormData({ ...formData, phone: val })
+  }
+  console.log({ country })
   return (
     <>
       <div className="flex-column">
         <label className="label-heading">{fields[0]}</label>
-        <select
-          name={fields[0]}
-          className={`flex-row ${className}`}
-          onChange={handleChange}
-        >
-          {options.map((option: any, index: number) => (
-            <option key={`${index}-${option.field}`} value={option.field}>
-              {option.flag} {option.field}
-            </option>
-          ))}
-        </select>
+        <CountryDropdown
+          value={country}
+          onChange={val => selectCountry(val)}
+          classes={className}
+          valueType={'short'}
+        />
       </div>
       <div className="flex-column">
         <label className="label-heading">{fields[1]}</label>
-        <select
-          name={fields[1]}
-          className={`flex-row ${className}`}
-          onChange={onChange}
-        >
-          {selectedVal?.subField?.map((option: any) => {
-            return <option>{option}</option>
-          })}
-        </select>
+        <RegionDropdown
+          disableWhenEmpty={true}
+          country={country}
+          value={region}
+          onChange={val => selectRegion(val)}
+          classes={className}
+          countryValueType="short"
+        />
       </div>
       <div className="flex-column">
         <label className="label-heading">Phone Number</label>
         <div className="align-phone-number">
-          <button className="" disabled={true}>
-            <span className="flag-style">{selectedVal.flag}</span>
-            <span>{selectedVal.code}</span>
-          </button>
-          <input
-            className="input-box"
-            name="phoneNumber"
-            type="number"
-            onChange={handleChange}
-            required
-            style={{
-              flex: 1,
-              borderLeft: '0',
-              border: '1px solid #ccc',
-              borderRadius: '0.25rem',
-            }}
-          ></input>
+          <PhoneInput
+            country={country.toLowerCase()}
+            value={phone}
+            onChange={phone => selectPhone(phone)}
+          />
         </div>
       </div>
     </>
