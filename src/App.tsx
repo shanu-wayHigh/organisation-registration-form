@@ -40,7 +40,7 @@ function TabPanel(props: any) {
 }
 
 function App() {
-  const [activeIndex, setActiveIndex] = React.useState(0)
+  const [activeIndex, setActiveIndex] = React.useState(2)
   const [completedIndex, setCompletedIndex] = React.useState('')
 
   return (

@@ -1,8 +1,11 @@
 import React from 'react'
+import * as emailjs from 'emailjs-com'
 import ImageUpload from '../../components/ImageUpload'
 import { AppContext } from '../../App'
 import { CompanyDetailsContext } from './context'
 import './styles.scss'
+
+emailjs.init('user_zjkxUiBwWLTcgOOXPaXu0')
 
 function CompanyDetails() {
   const [formData, setFormData] = React.useState({} as any)
@@ -30,8 +33,20 @@ function CompanyDetails() {
     localStorage.setItem('companyDetails', JSON.stringify(formData))
     const otp = generateOTP()
     localStorage.setItem('otp', otp)
+    let templateParams = {
+      otp: otp,
+      emailId: formData.emailId,
+    }
+    emailjs.send('service_pvpyyqj', 'template_a7ielqb', templateParams).then(
+      function (response) {
+        console.log('SUCCESS!', response.status, response.text)
+      },
+      function (error) {
+        console.log('FAILED...', error)
+      }
+    )
     setActiveIndex(2)
-
+    setCompletedIndex(0)
     setCompletedIndex(1)
   }
 

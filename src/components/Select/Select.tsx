@@ -26,7 +26,7 @@ function Select(props: any) {
         >
           {options.map((option: any, index: number) => (
             <option key={`${index}-${option.field}`} value={option.field}>
-              {option.field}
+              {option.flag} {option.field}
             </option>
           ))}
         </select>

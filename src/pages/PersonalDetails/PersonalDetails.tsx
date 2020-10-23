@@ -1,4 +1,5 @@
 import React from 'react'
+import emojiFlags from 'emoji-flags'
 import RadioGroup from '../../components/RadioGroup'
 import Select from '../../components/Select'
 import { PersonDetailsContext } from '../PersonalDetails/context'
@@ -18,11 +19,15 @@ function PersonalDetails() {
   const options = [
     {
       field: 'India',
+      flag: emojiFlags.countryCode('IN').emoji,
       subField: ['TamilNadu', 'Karnataka', 'Kerala'],
+      code: '+91',
     },
     {
-      field: 'USA',
-      subField: ['America', 'Heh', 'hhh'],
+      field: 'United States',
+      flag: emojiFlags.countryCode('US').emoji,
+      subField: ['America', 'England', 'New York'],
+      code: '+1',
     },
   ]
   const validateForm = (formData: any) => {
