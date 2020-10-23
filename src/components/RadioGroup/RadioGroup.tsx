@@ -11,6 +11,7 @@ function RadioGroup(props: any) {
       {values.length > 0 &&
         values.map((value: any) => (
           <label
+            tabIndex={0}
             key={value}
             className={`gender-label ${
               formData.gender === value ? 'active-radio' : ''

@@ -43,10 +43,18 @@ function TabPanel(props: any) {
 function App() {
   const [activeIndex, setActiveIndex] = React.useState(0)
   const [completedIndex, setCompletedIndex] = React.useState([])
+  const [updatedFormData, setUpdatedFormData] = React.useState({})
 
   return (
     <AppContext.Provider
-      value={{ activeIndex, setActiveIndex, setCompletedIndex, completedIndex }}
+      value={{
+        activeIndex,
+        setActiveIndex,
+        setCompletedIndex,
+        completedIndex,
+        setUpdatedFormData,
+        updatedFormData,
+      }}
     >
       <div className="App">
         <header className="header-panel">

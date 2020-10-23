@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
@@ -6,45 +6,34 @@ import { PersonDetailsContext } from '../../pages/PersonalDetails/context'
 
 function Select(props: any) {
   const { fields = [], className = '' } = props
-  const { formData, setFormData } = useContext(PersonDetailsContext as any)
-  const [country, setCountry] = React.useState('')
-  const [shortCountry, setShortCountry] = React.useState('')
-  const [region, setRegion] = React.useState('')
-  const [phone, setPhone] = React.useState('')
+  const { formData, setFormData, error, setError } = useContext(
+    PersonDetailsContext as any
+  )
 
-  const selectCountry = (val: any) => {
-    setCountry(val)
-    setFormData({ ...formData, country: val })
+  const handleChange = (val: any, name: string) => {
+    setFormData({ ...formData, [name]: val })
   }
 
-  const selectRegion = (val: any) => {
-    setRegion(val)
-    setFormData({ ...formData, region: val })
-  }
-
-  const selectPhone = (val: any) => {
-    setPhone(val)
-    setFormData({ ...formData, phone: val })
-  }
-  console.log({ country })
   return (
     <>
       <div className="flex-column">
         <label className="label-heading">{fields[0]}</label>
         <CountryDropdown
-          value={country}
-          onChange={val => selectCountry(val)}
+          value={formData.country}
+          onChange={val => handleChange(val, 'country')}
           classes={className}
           valueType={'short'}
+          name={'country'}
+          // required={true}
         />
+        {error?.country !== '' && <span>{error?.country}</span>}
       </div>
       <div className="flex-column">
         <label className="label-heading">{fields[1]}</label>
         <RegionDropdown
-          disableWhenEmpty={true}
-          country={country}
-          value={region}
-          onChange={val => selectRegion(val)}
+          country={formData.country}
+          value={formData.region}
+          onChange={val => handleChange(val, 'region')}
           classes={className}
           countryValueType="short"
         />
@@ -53,9 +42,10 @@ function Select(props: any) {
         <label className="label-heading">Phone Number</label>
         <div className="align-phone-number">
           <PhoneInput
-            country={country.toLowerCase()}
-            value={phone}
-            onChange={phone => selectPhone(phone)}
+            country={formData?.country?.toLowerCase() || 'us'}
+            value={formData.phone}
+            onChange={phone => handleChange(phone, 'phone')}
+            inputProps={{ name: 'phone', required: true, autoFocus: true }}
           />
         </div>
       </div>

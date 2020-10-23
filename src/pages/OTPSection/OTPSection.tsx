@@ -12,7 +12,7 @@ function OTPSection() {
   } = React.useContext(AppContext)
   const elementsRef: any = useRef([])
 
-  const handleChange = (event: any, index: number) => {
+  const handleChange = (event: any) => {
     setOtp([...otp, event?.target.value])
   }
 
@@ -41,7 +41,7 @@ function OTPSection() {
           className="input-otp"
           maxLength={1}
           type="text"
-          onChange={event => handleChange(event, i)}
+          onChange={event => handleChange(event)}
           ref={ref => (elementsRef.current[i] = ref)}
           tabIndex={i}
         />

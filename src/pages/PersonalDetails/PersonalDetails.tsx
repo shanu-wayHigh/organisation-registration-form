@@ -1,5 +1,4 @@
 import React from 'react'
-import emojiFlags from 'emoji-flags'
 import RadioGroup from '../../components/RadioGroup'
 import Select from '../../components/Select'
 import { PersonDetailsContext } from '../PersonalDetails/context'
@@ -7,15 +6,17 @@ import { AppContext } from '../../App'
 import './styles.scss'
 
 function PersonalDetails() {
-  const [formData, setFormData] = React.useState({
-    gender: 'male',
-  } as any)
   const [error, setError] = React.useState({} as any)
   const {
     setActiveIndex,
     setCompletedIndex,
     completedIndex,
+    updatedFormData,
   } = React.useContext(AppContext)
+  const [formData, setFormData] = React.useState({
+    gender: 'male',
+    ...updatedFormData.personalDetails,
+  } as any)
 
   const handleChange = (event: any) => {
     const { value, name } = event.target
@@ -23,11 +24,10 @@ function PersonalDetails() {
   }
 
   const validateForm = (formData: any) => {
-    if (!formData.fullName) {
-      setError({ ...error, fullName: 'Name field is required' })
-    }
-    if (!formData.gender) {
-      setError({ ...error, gender: 'Select any one gender' })
+    if (!formData.country) {
+      setError({ ...error, country: 'Select an option' })
+    } else {
+      setError({ ...error, country: '' })
     }
   }
 
@@ -40,7 +40,9 @@ function PersonalDetails() {
   }
 
   return (
-    <PersonDetailsContext.Provider value={{ formData, setFormData }}>
+    <PersonDetailsContext.Provider
+      value={{ formData, setFormData, error, setError }}
+    >
       <form onSubmit={handleFormSubmit}>
         <div className="flex-column">
           <label className="label-heading">Full Name</label>
@@ -49,6 +51,7 @@ function PersonalDetails() {
             type="text"
             name="fullName"
             onChange={handleChange}
+            value={formData.fullName}
             required
           />
         </div>
@@ -58,6 +61,7 @@ function PersonalDetails() {
             className="radio-box"
             values={['male', 'female', 'other']}
             onChange={handleChange}
+            value={formData.gender}
           />
         </div>
         <div>

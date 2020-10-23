@@ -8,13 +8,18 @@ import './styles.scss'
 emailjs.init('user_zjkxUiBwWLTcgOOXPaXu0')
 
 function CompanyDetails() {
-  const [formData, setFormData] = React.useState({} as any)
-  const [error] = React.useState({} as any)
   const {
     setActiveIndex,
     setCompletedIndex,
     completedIndex,
+    updatedFormData,
+    setUpdatedFormData,
   } = React.useContext(AppContext)
+  const [formData, setFormData] = React.useState(
+    updatedFormData.companyDetails as any
+  )
+  console.log({ formData, updatedFormData })
+  const [error] = React.useState({} as any)
 
   const handleChange = (event: any) => {
     const { value, name, type, checked = false } = event.target
@@ -41,17 +46,17 @@ function CompanyDetails() {
       otp: otp,
       emailId: formData.emailId,
     }
-    emailjs.send('service_pvpyyqj', 'template_a7ielqb', templateParams).then(
-      function (response) {
-        console.log('SUCCESS!', response.status, response.text)
-      },
-      function (error) {
-        console.log('FAILED...', error)
-      }
-    )
+    emailjs.send('service_pvpyyqj', 'template_a7ielqb', templateParams)
     setActiveIndex(2)
     setCompletedIndex([...completedIndex, 0])
     setCompletedIndex([...completedIndex, 1])
+    const companyDetails = JSON.parse(
+      localStorage.getItem('companyDetails') as any
+    )
+    setUpdatedFormData({
+      ...updatedFormData,
+      companyDetails: companyDetails,
+    })
   }
 
   return (
@@ -67,6 +72,7 @@ function CompanyDetails() {
             type="text"
             name="companyName"
             onChange={handleChange}
+            value={formData?.companyName}
             required
           />
           {error.companyName === '' && (
@@ -80,6 +86,7 @@ function CompanyDetails() {
             type="email"
             name="emailId"
             onChange={handleChange}
+            value={formData?.emailId}
             required
           />
         </div>
@@ -90,6 +97,7 @@ function CompanyDetails() {
             type="text"
             name="jobTitle"
             onChange={handleChange}
+            value={formData?.jobTitle}
             required
           />
         </div>
@@ -100,6 +108,7 @@ function CompanyDetails() {
             type="text"
             name="experience"
             onChange={handleChange}
+            value={formData?.experience}
             required
           />
         </div>
@@ -109,6 +118,7 @@ function CompanyDetails() {
             type="checkbox"
             name="acceptTermsAndConditions"
             onChange={handleChange}
+            checked={formData?.acceptTermsAndConditions}
             required
           />
           <label className="terms-conditions-text">
@@ -124,6 +134,13 @@ function CompanyDetails() {
             onClick={() => {
               setActiveIndex(0)
               setCompletedIndex([])
+              const personalDetails = JSON.parse(
+                localStorage.getItem('personalDetails') as any
+              )
+              setUpdatedFormData({
+                ...updatedFormData,
+                personalDetails: personalDetails,
+              })
             }}
           >
             Back
