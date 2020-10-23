@@ -9,7 +9,6 @@ const AppContext = React.createContext({} as any)
 function TabPanel(props: any) {
   const { list = [] } = props
   const { activeIndex, completedIndex } = React.useContext(AppContext)
-  console.log({ completedIndex })
 
   return (
     list.length > 0 &&
