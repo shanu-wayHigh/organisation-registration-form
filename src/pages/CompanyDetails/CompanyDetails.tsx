@@ -18,8 +18,6 @@ function CompanyDetails() {
   const [formData, setFormData] = React.useState(
     updatedFormData.companyDetails as any
   )
-  console.log({ formData, updatedFormData })
-  const [error] = React.useState({} as any)
 
   const handleChange = (event: any) => {
     const { value, name, type, checked = false } = event.target
@@ -75,9 +73,6 @@ function CompanyDetails() {
             value={formData?.companyName}
             required
           />
-          {error.companyName === '' && (
-            <span className="error">{error.companyName}</span>
-          )}
         </div>
         <div className="flex-column">
           <label className="label-heading">Email Id</label>

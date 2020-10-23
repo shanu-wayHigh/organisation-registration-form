@@ -1,19 +1,21 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { AppContext } from '../../App'
 import './styles.scss'
 
 function OTPSection() {
   const [otp, setOtp] = React.useState([] as any)
   const [error, setError] = React.useState('')
+  const elementsRef: any = Array.from({ length: 5 }, a => React.createRef())
+
   const {
     setActiveIndex,
     setCompletedIndex,
     completedIndex,
   } = React.useContext(AppContext)
-  const elementsRef: any = useRef([])
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: any, index: number) => {
     setOtp([...otp, event?.target.value])
+    elementsRef[index]?.current?.nextSibling?.focus()
   }
 
   const handleSubmit = (e: any) => {
@@ -32,30 +34,24 @@ function OTPSection() {
     }
   }
 
-  const renderInput = () => {
-    let items = []
-
-    for (let i = 0; i < 5; i++) {
-      items.push(
-        <input
-          className="input-otp"
-          maxLength={1}
-          type="text"
-          onChange={event => handleChange(event)}
-          ref={ref => (elementsRef.current[i] = ref)}
-          tabIndex={i}
-        />
-      )
-    }
-    return items
-  }
-
   return (
     <>
       <form onSubmit={handleSubmit}>
         <div className="flex-column">
           <label className="label-heading otp-heading">Enter your code</label>
-          <div className="input-wrapper">{renderInput()}</div>
+          <div className="input-wrapper">
+            {new Array(5).fill('').map((item: any, index: number) => {
+              return (
+                <input
+                  className="input-otp"
+                  maxLength={1}
+                  type="text"
+                  onChange={(event: any) => handleChange(event, index)}
+                  ref={elementsRef[index]}
+                />
+              )
+            })}
+          </div>
           {error !== '' && <span className="error">{error}</span>}
         </div>
 
