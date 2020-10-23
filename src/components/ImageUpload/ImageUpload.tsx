@@ -3,7 +3,6 @@ import { CompanyDetailsContext } from '../../pages/CompanyDetails/context'
 import './styles.scss'
 
 function ImageUpload(props: any) {
-  const { onChange = () => {} } = props
   const { formData, setFormData } = useContext(CompanyDetailsContext as any)
 
   const [imageUrl, setImageUrl] = React.useState(

@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from 'react'
+import React, { useRef } from 'react'
 import { AppContext } from '../../App'
 import './styles.scss'
 

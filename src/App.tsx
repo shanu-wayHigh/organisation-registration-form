@@ -93,7 +93,7 @@ function App() {
           )}
           {activeIndex === 3 && (
             <>
-              <h1>Congragulations</h1>
+              <h1>Congratulations</h1>
               <h6>You have registered successfully!</h6>
             </>
           )}
