@@ -6,7 +6,7 @@ import { PersonDetailsContext } from '../../pages/PersonalDetails/context'
 
 function Select(props: any) {
   const { fields = [], className = '' } = props
-  const { formData, setFormData, error, setError } = useContext(
+  const { formData, setFormData, error } = useContext(
     PersonDetailsContext as any
   )
 
