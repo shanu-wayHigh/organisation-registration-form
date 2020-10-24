@@ -6,7 +6,7 @@ function ImageUpload(props: any) {
   const { formData, setFormData } = useContext(CompanyDetailsContext as any)
 
   const [imageUrl, setImageUrl] = React.useState(
-    'https://ibb.co/zGFFfC2'
+    'http://placehold.jp/150x150.png'
   )
 
   const handleChange = (event: any) => {
