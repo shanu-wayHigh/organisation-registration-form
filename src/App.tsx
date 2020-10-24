@@ -11,31 +11,33 @@ function TabPanel(props: any) {
   const { activeIndex, completedIndex } = React.useContext(AppContext)
 
   return (
-    list.length > 0 &&
-    list.map((label: any, index: any) => (
-      <div
-        key={index}
-        className={`tab ${activeIndex === index ? 'active-tab' : ''}`}
-      >
-        <span className="rounded-number">
-          {completedIndex[index] === index ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="24"
-              viewBox="0 0 24 24"
-              width="24"
-              fill="#ffffff"
-            >
-              <path d="M0 0h24v24H0z" fill="none" />
-              <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
-            </svg>
-          ) : (
-            index + 1
-          )}
-        </span>
-        <span>{label}</span>
-      </div>
-    ))
+    <div className="tab-panel-wrapper">
+      {list.length > 0 &&
+      list.map((label: any, index: any) => (
+        <div
+          key={index}
+          className={`tab ${activeIndex === index ? 'active-tab' : ''}`}
+        >
+          <span className="rounded-number">
+            {completedIndex[index] === index ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                fill="#ffffff"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+              </svg>
+            ) : (
+              index + 1
+            )}
+          </span>
+          <span>{label}</span>
+        </div>
+      ))}
+    </div>
   )
 }
 
@@ -65,7 +67,7 @@ function App() {
           {activeIndex === 0 && (
             <>
               <h1>Add your personal details</h1>
-              <h6>Some dummy text</h6>
+              <p className="text-lorem">Lorem Ipsum is simple dummy text of the printing and typesetting industry.</p>
               <div className="wrapper">
                 <section className="personal-details-section">
                   <PersonalDetails />

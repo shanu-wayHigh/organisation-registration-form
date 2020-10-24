@@ -19,7 +19,7 @@
 }
 .wrapper {
   background-color: #ffffff;
-  box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
   max-width: 1200px;
   width: 400px;
   margin: 0 auto;
@@ -35,38 +35,50 @@
     padding: 1rem;
   }
 }
+.text-lorem {
+  font-size: 12px;
+  margin-bottom: 1.5rem;
+}
 .header-panel {
   background-color: #2f4b64;
   width: 100%;
+  height: 3.5rem;
   display: flex;
   align-items: center;
-  height: 2.5rem;
-  justify-content: space-around;
-  // position: fixed;
-  // top: 0;
+  justify-content: center;
+
+  .tab-panel-wrapper {
+    display: flex;
+    font-size: 14px;
+  }
 
   .rounded-number {
     border: 1px solid transparent;
     border-radius: 50%;
-    width: 1rem;
-    height: 1rem;
+    width: 12px;
+    height: 12px;
     padding: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #29435a;
-    margin-right: 1rem;
+    margin-right: 12px;
   }
 
   .tab {
     color: #c1c9d1;
     display: flex;
     align-items: center;
+    margin-right: 6rem;
+    &:last-child {
+      margin-right: 0;
+    }
     @media screen and (max-width: 767px) {
       font-size: 10px;
     }
     &.active-tab {
       color: #ffffff;
+      font-weight: 500;
       .rounded-number {
         background-color: #ed5902;
       }

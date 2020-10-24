@@ -58,7 +58,7 @@ function PersonalDetails() {
         <div className="flex-column">
           <label className="label-heading">Gender</label>
           <RadioGroup
-            className="radio-box"
+            className="input-box radio-box"
             values={['male', 'female', 'other']}
             onChange={handleChange}
             value={formData.gender}
@@ -66,7 +66,7 @@ function PersonalDetails() {
         </div>
         <div>
           <Select
-            className="select-box"
+            className="input-box select-box"
             fields={['Country', 'State']}
             onChange={handleChange}
           />

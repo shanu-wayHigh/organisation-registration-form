@@ -8,8 +8,8 @@
   margin-bottom: 1.5rem;
 }
 .label-heading {
-  color: #847d7d;
-  font-size: 1rem;
+  color: #6c6b6b;
+  font-size: 14px;
   margin-bottom: 0.5rem;
 }
 .flag-style {
@@ -21,6 +21,8 @@
 }
 .input-box {
   height: 1.5rem;
+  border: 1px solid #c7c7c7;
+  border-radius: 0.25rem;
   &::focus {
     outline: #ed5902;
   }
@@ -28,6 +30,7 @@
 .radio-box,
 .select-box {
   height: 30px;
+  padding: 0 0.5rem;
 }
 .submit-button {
   height: 2rem;
@@ -35,4 +38,11 @@
   border-radius: 0.25rem;
   background-color: #ed5902;
   color: #ffffff;
+}
+.react-tel-input .form-control {
+  width: 100%;
+}
+
+.react-tel-input .flag-dropdown {
+  border-right: 0;
 }
