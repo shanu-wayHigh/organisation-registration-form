@@ -44,7 +44,7 @@ function PersonalDetails() {
       value={{ formData, setFormData, error, setError }}
     >
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-column">
+        <div className="flex-column focus-within">
           <label className="label-heading">Full Name</label>
           <input
             className="input-box"
@@ -55,7 +55,7 @@ function PersonalDetails() {
             required
           />
         </div>
-        <div className="flex-column">
+        <div className="flex-column focus-within">
           <label className="label-heading">Gender</label>
           <RadioGroup
             className="input-box radio-box"
@@ -71,7 +71,7 @@ function PersonalDetails() {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-column">
+        <div className="flex-column focus-within">
           <button className="submit-button" type="submit">
             Next
           </button>

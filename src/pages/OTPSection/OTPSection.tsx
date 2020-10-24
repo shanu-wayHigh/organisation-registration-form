@@ -6,6 +6,7 @@ function OTPSection() {
   const [otp, setOtp] = React.useState([] as any)
   const [error, setError] = React.useState('')
   const elementsRef: any = Array.from({ length: 5 }, a => React.createRef())
+  const [disabled, setDisabled] = React.useState(true)
 
   const {
     setActiveIndex,
@@ -16,6 +17,9 @@ function OTPSection() {
   const handleChange = (event: any, index: number) => {
     setOtp([...otp, event?.target.value])
     elementsRef[index]?.current?.nextSibling?.focus()
+    if(index === 4) {
+      setDisabled(false)
+    }
   }
 
   const handleSubmit = (e: any) => {
@@ -65,15 +69,15 @@ function OTPSection() {
           >
             Back
           </button>
-          <button className="otp-button" type="submit">
+          <button className="otp-button" disabled={disabled} type="submit">
             Verify
           </button>
         </div>
       </form>
       <div className="separator"></div>
       <div className="just-text">
-        Didnt receive the email?Check your spam filter for an email from
-        name@domain.com
+        Didnt receive the email? Check your spam filter for an email from  
+        <span>name@domain.com</span>
       </div>
     </>
   )

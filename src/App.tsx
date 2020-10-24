@@ -77,8 +77,8 @@ function App() {
           )}
           {activeIndex === 1 && (
             <>
-              <h1>Add your Company details</h1>
-              <h6>Some dummy text</h6>
+             <h1>Add your company details</h1>
+              <p className="text-lorem">Lorem Ipsum is simple dummy text of the printing and typesetting industry.</p>
               <div className="wrapper">
                 <section className="personal-details-section">
                   <CompanyDetails />
@@ -89,10 +89,8 @@ function App() {
           {activeIndex === 2 && (
             <>
               <h1>Enter your OTP</h1>
-              <h6>
-                For your verification, we need to verify your identity. We sent
-                a 5-digit code from name@domain.com .Please enter it below
-              </h6>
+              <p className="text-lorem">For your verification, we need to verify your identity. We sent
+                a 5-digit code from name@domain.com .Please enter it below</p>
               <div className="wrapper">
                 <section className="personal-details-section">
                   <OTPSection />

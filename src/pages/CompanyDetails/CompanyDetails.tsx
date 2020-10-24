@@ -60,10 +60,10 @@ function CompanyDetails() {
   return (
     <CompanyDetailsContext.Provider value={{ formData, setFormData }}>
       <form onSubmit={handleSubmit}>
-        <div className="flex-column">
+        <div className="flex-column focus-within">
           <ImageUpload />
         </div>
-        <div className="flex-column">
+        <div className="flex-column focus-within">
           <label className="label-heading">Company Name</label>
           <input
             className="input-box"
@@ -74,7 +74,7 @@ function CompanyDetails() {
             required
           />
         </div>
-        <div className="flex-column">
+        <div className="flex-column focus-within">
           <label className="label-heading">Email Id</label>
           <input
             className="input-box"
@@ -85,7 +85,7 @@ function CompanyDetails() {
             required
           />
         </div>
-        <div className="flex-column">
+        <div className="flex-column focus-within">
           <label className="label-heading">Job Title</label>
           <input
             className="input-box"
@@ -96,7 +96,7 @@ function CompanyDetails() {
             required
           />
         </div>
-        <div className="flex-column">
+        <div className="flex-column focus-within">
           <label className="label-heading">Years of Experience</label>
           <input
             className="input-box"

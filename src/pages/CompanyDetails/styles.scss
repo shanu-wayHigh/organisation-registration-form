@@ -5,31 +5,36 @@
 }
 .terms-conditions-text {
   color: #847d7d;
-  font-size: 1rem;
+  font-size: 14px;
 }
 .check-box {
   margin-right: 0.5rem;
   width: 1.5rem;
   height: 1.5rem;
+  font-size: 14px;
 }
 .margin-bottom-1 {
   margin-bottom: 1rem;
 }
 .button-wrapper {
   display: flex;
-  .otp-button {
-    background-color: #ed5902;
-    flex: 1;
-    color: #ffffff;
+  .otp-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
-  .back-button {
-    flex: 0 0 150px;
-    margin-right: 0.5rem;
-  }
-  .back-button,
-  .otp-button {
-    height: 2.5rem;
-    border: 0;
-    border-radius: 0.25rem;
-  }
+}
+.otp-button {
+  background-color: #ed5902;
+  flex: 1;
+  color: #ffffff;
+}
+.back-button {
+  flex: 0 0 100px;
+  margin-right: 0.5rem;
+}
+.back-button,
+.otp-button {
+  height: 2.5rem;
+  border: 0;
+  border-radius: 0.25rem;
 }

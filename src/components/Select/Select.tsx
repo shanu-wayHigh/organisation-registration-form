@@ -16,7 +16,7 @@ function Select(props: any) {
 
   return (
     <>
-      <div className="flex-column">
+      <div className="flex-column focus-within">
         <label className="label-heading">{fields[0]}</label>
         <CountryDropdown
           value={formData.country}
@@ -24,11 +24,10 @@ function Select(props: any) {
           classes={className}
           valueType={'short'}
           name={'country'}
-          // required={true}
         />
         {error?.country !== '' && <span>{error?.country}</span>}
       </div>
-      <div className="flex-column">
+      <div className="flex-column focus-within">
         <label className="label-heading">{fields[1]}</label>
         <RegionDropdown
           country={formData.country}
@@ -38,8 +37,8 @@ function Select(props: any) {
           countryValueType="short"
         />
       </div>
-      <div className="flex-column">
-        <label className="label-heading">Phone Number</label>
+      <div className="flex-column focus-within">
+        <label className="label-heading">Phone</label>
         <div className="align-phone-number">
           <PhoneInput
             country={formData?.country?.toLowerCase() || 'us'}
